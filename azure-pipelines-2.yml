@@ -11,6 +11,13 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    feedsToUse: config
+    nugetConfigPath: NuGet.config 
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
